@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advay Adhyapak Photography | Premium Wedding, Event & Editorial Photographer</title>
+  <meta name="description" content="Professional pre-wedding, wedding, events, fashion, products, and videography services by Advay Adhyapak. Capture your moments with stunning visuals.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="onepage">
+
+  <!-- Fixed Fullscreen Background Slideshow (Locus Aesthetic) -->
+  <div class="bg-slideshow-container">
+    <div class="bg-slide active" style="background-image: url('images/bg1.png');"></div>
+    <div class="bg-slide" style="background-image: url('images/bg2.png');"></div>
+    <div class="bg-slide" style="background-image: url('images/bg3.png');"></div>
+    <div class="bg-slide" style="background-image: url('images/bg4.png');"></div>
+    <div class="bg-slideshow-overlay"></div>
+  </div>
+
+  <!-- Custom Custom Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Header / Navigation -->
+  <header class="navbar-header">
+    <div class="nav-container">
+      <a href="#" class="logo-wrapper">
+        <!-- Logo Image Variants for Theme Toggle Support -->
+        <img src="images/logo_light.png" alt="Advay Adhyapak Photography" class="logo-img logo-img-light">
+        <img src="images/logo_dark.png" alt="Advay Adhyapak Photography" class="logo-img logo-img-dark">
+      </a>
+      
+      <nav class="nav-links">
+        <a href="#" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#booking" class="nav-link">Book Now</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button id="menu-toggle" class="hamburger" aria-label="Open Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Off-Canvas Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <nav class="mobile-nav-links">
+      <a href="#" class="mobile-nav-link">Home</a>
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#services" class="mobile-nav-link">Services</a>
+      <a href="#portfolio" class="mobile-nav-link">Portfolio</a>
+      <a href="#booking" class="mobile-nav-link">Book Now</a>
+      <a href="#contact" class="mobile-nav-link">Contact</a>
+    </nav>
+  </div>
+
+  <!-- HOME SECTION: Completely Transparent Hero -->
+  <section id="home" class="home-hero-section">
+    <div class="hero-center-content animate-on-load">
+      <span class="hero-tag">Street & Fine-Art Photographer</span>
+      <h1 class="hero-title-large">Advay Adhyapak</h1>
+      <p class="hero-subtitle-clean">Capturing raw human emotions and modern aesthetics through a premium visual lens.</p>
+      <div class="hero-btn-wrapper">
+        <a href="#portfolio" class="btn btn-primary">View My Work</a>
+      </div>
+    </div>
+    <div class="scroll-down-indicator">
+      <a href="#about" aria-label="Scroll Down"><i class="fa-solid fa-chevron-down"></i></a>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION: Floating Glass Card -->
+  <section id="about" class="locus-section section-padding">
+    <div class="container locus-card animate-on-scroll">
+      <div class="grid grid-2">
+        <div class="about-image-wrapper">
+          <div class="about-image-card shadow-card-effect">
+            <img src="images/about_locus.png" alt="Advay Adhyapak portrait" class="about-img">
+            <div class="floating-badge">
+              <span class="badge-num">10+</span>
+              <span class="badge-text">Years of<br>Excellence</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-content">
+          <span class="section-tag">Who I Am</span>
+          <h2 class="section-title">Life is an adventure. Capture every minute.</h2>
+          <p class="about-text">
+            I am **Advay Adhyapak**, a fine-art photographer based in Pune, India. My passion is capturing the organic details of life—whether it's the raw connection of a wedding couple, the sleek minimalism of a premium product, or the bold structures of high fashion.
+          </p>
+          
+          <div class="about-sub-grid">
+            <div class="sub-col">
+              <h3 class="h4 mb-3">A Little About Me</h3>
+              <p class="about-text-small">
+                My approach is deeply rooted in editorial fine-art styles. I blend natural light with subtle shadow play to produce images that feel atmospheric, sophisticated, and real.
+              </p>
+            </div>
+            <div class="sub-col">
+              <h3 class="h4 mb-3">My Equipment</h3>
+              <ul class="unordered-list">
+                <li>Sony Alpha 7R V & Canon EOS R5</li>
+                <li>G-Master Prime Lenses (35mm, 85mm, 135mm)</li>
+                <li>DJI Ronin 4D 4-Axis Stabilizer</li>
+                <li>Profoto B10X Studio Flash Kits</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-item">
+              <h3 class="stat-number">350+</h3>
+              <p class="stat-label">Weddings</p>
+            </div>
+            <div class="stat-item">
+              <h3 class="stat-number">150+</h3>
+              <p class="stat-label">Editorials</p>
+            </div>
+            <div class="stat-item">
+              <h3 class="stat-number">100%</h3>
+              <p class="stat-label">Happy Clients</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO SECTION: Floating Glass Card -->
+  <section id="portfolio" class="locus-section section-padding">
+    <div class="container locus-card animate-on-scroll">
+      <div class="section-header text-center">
+        <span class="section-tag">My Gallery</span>
+        <h2 class="section-title">Selected Masterpieces</h2>
+        <p class="section-desc">Explore our premium portfolios. Click on any image to open in full screen.</p>
+      </div>
+
+      <!-- Portfolio Filter Tabs -->
+      <div class="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">All Work</button>
+        <button class="filter-btn" data-filter="wedding">Weddings</button>
+        <button class="filter-btn" data-filter="prewedding">Pre-Weddings</button>
+        <button class="filter-btn" data-filter="events">Events</button>
+        <button class="filter-btn" data-filter="fashion">Fashion & Model</button>
+        <button class="filter-btn" data-filter="product">Products</button>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="portfolio-grid" id="portfolio-grid">
+        <!-- Item 1 -->
+        <div class="portfolio-item" data-category="wedding" data-src="images/wedding.png" data-title="Eternal Promises" data-desc="Grand traditional Indian wedding ceremony highlighting candid laughter and emotions.">
+          <div class="portfolio-card">
+            <img src="images/wedding.png" alt="Indian wedding couple" class="portfolio-img">
+            <div class="portfolio-overlay">
+              <div class="portfolio-info">
+                <span class="portfolio-item-cat">Wedding</span>
+                <h4 class="portfolio-item-title">Eternal Promises</h4>
+                <div class="view-icon"><i class="fa-solid fa-expand"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="portfolio-item" data-category="prewedding" data-src="images/pre_wedding.png" data-title="Sunset Palace Love" data-desc="Elegance under the golden sunset sky at a beautiful palace courtyard.">
+          <div class="portfolio-card">
+            <img src="images/pre_wedding.png" alt="Indian pre-wedding shoot" class="portfolio-img">
+            <div class="portfolio-overlay">
+              <div class="portfolio-info">
+                <span class="portfolio-item-cat">Pre-Wedding</span>
+                <h4 class="portfolio-item-title">Sunset Palace Love</h4>
+                <div class="view-icon"><i class="fa-solid fa-expand"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="portfolio-item" data-category="events" data-src="images/event.png" data-title="Neon Nights Festival" data-desc="Vibrant dynamic colors and high energy from a major live music concert event.">
+          <div class="portfolio-card">
+            <img src="images/event.png" alt="Live music concert photography" class="portfolio-img">
+            <div class="portfolio-overlay">
+              <div class="portfolio-info">
+                <span class="portfolio-item-cat">Events</span>
+                <h4 class="portfolio-item-title">Neon Nights Festival</h4>
+                <div class="view-icon"><i class="fa-solid fa-expand"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="portfolio-item" data-category="fashion" data-src="images/fashion.png" data-title="Silk Editorial" data-desc="High-concept studio portrait focusing on red silk textures and dramatic studio lighting.">
+          <div class="portfolio-card">
+            <img src="images/fashion.png" alt="Fashion photoshoot model" class="portfolio-img">
+            <div class="portfolio-overlay">
+              <div class="portfolio-info">
+                <span class="portfolio-item-cat">Fashion / Studio</span>
+                <h4 class="portfolio-item-title">Silk Editorial</h4>
+                <div class="view-icon"><i class="fa-solid fa-expand"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="portfolio-item" data-category="product" data-src="images/product.png" data-title="Luxury Crono timepiece" data-desc="Premium commercial watch advertising highlighting complex textures and water droplets.">
+          <div class="portfolio-card">
+            <img src="images/product.png" alt="Luxury watch product photography" class="portfolio-img">
+            <div class="portfolio-overlay">
+              <div class="portfolio-info">
+                <span class="portfolio-item-cat">Product Shoot</span>
+                <h4 class="portfolio-item-title">Luxury Crono timepiece</h4>
+                <div class="view-icon"><i class="fa-solid fa-expand"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="portfolio-item" data-category="events" data-src="images/videography.png" data-title="Cinematic Vision" data-desc="Behind-the-scenes recording capturing motion film production.">
+          <div class="portfolio-card">
+            <img src="images/videography.png" alt="Behind the scenes videography" class="portfolio-img">
+            <div class="portfolio-overlay">
+              <div class="portfolio-info">
+                <span class="portfolio-item-cat">Videography</span>
+                <h4 class="portfolio-item-title">Cinematic Vision</h4>
+                <div class="view-icon"><i class="fa-solid fa-expand"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION: Floating Glass Card with Overlapping Grid -->
+  <section id="services" class="locus-section section-padding">
+    <div class="container locus-card animate-on-scroll">
+      <div class="row-locus align-items-center">
+        <!-- Locus Overlapping Image Grid -->
+        <div class="overlap-grid-wrapper">
+          <div class="overlap-grid">
+            <div class="overlap-item item-1">
+              <figure class="rounded shadow-card-effect"><img src="images/s1.png" alt="Wedding couples"></figure>
+            </div>
+            <div class="overlap-item item-2">
+              <figure class="rounded shadow-card-effect"><img src="images/s2.png" alt="Behind the scenes shoot"></figure>
+            </div>
+          </div>
+        </div>
+        
+        <div class="services-content-wrapper">
+          <span class="section-tag">My Services</span>
+          <h2 class="section-title">Professional Creative Solutions</h2>
+          <p class="about-text mb-6">
+            We provide a unique, sophisticated visual production experience, combining cinematic composition with high-grade editing deliverables.
+          </p>
+
+          <div class="service-list-locus">
+            <div class="service-list-item">
+              <div class="service-locus-icon"><i class="fa-solid fa-camera"></i></div>
+              <div class="service-locus-text">
+                <h3>Photography</h3>
+                <p>High-end editorial, candid weddings, creative model portfolios, and luxury e-commerce catalog captures.</p>
+              </div>
+            </div>
+
+            <div class="service-list-item">
+              <div class="service-locus-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <div class="service-locus-text">
+                <h3>Retouching & Editing</h3>
+                <p>Commercial-grade color correction, precise skin/material retouching, and premium digital album design.</p>
+              </div>
+            </div>
+
+            <div class="service-list-item">
+              <div class="service-locus-icon"><i class="fa-solid fa-video"></i></div>
+              <div class="service-locus-text">
+                <h3>Cinematography</h3>
+                <p>4K documentary films, corporate campaign promos, drone aerial photography, and social highlight reels.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING SECTION: Floating Glass Card -->
+  <section id="booking" class="locus-section section-padding">
+    <div class="container locus-card animate-on-scroll">
+      <div class="grid grid-2">
+        <div class="calculator-info-card">
+          <span class="section-tag">Booking & Customization</span>
+          <h2 class="section-title">Customize Your Package & Book Instantly</h2>
+          <p class="about-text">
+            Select your desired base photography service, toggle the optional add-ons, and review your estimated pricing instantly.
+          </p>
+
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h4>Estimated Price</h4>
+              <div class="estimated-price">$<span id="price-calc-val">800</span></div>
+            </div>
+            <div class="pricing-details">
+              <p><strong>Base Category:</strong> <span id="summary-category">Pre-Wedding Session</span></p>
+              <p><strong>Included Deliverables:</strong> <span id="summary-deliverables">4-hour shoot, 30 edited shots, online gallery</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-form-wrapper">
+          <form id="booking-form" class="booking-form">
+            <h3 class="form-title">Customize Package</h3>
+            
+            <div class="form-group">
+              <label for="booking-category">Select Base Service *</label>
+              <select id="booking-category" name="category" required>
+                <option value="prewedding" data-price="800" data-desc="4-hour outdoor shoot, 30 edited shots, 1 outfit change.">Pre-Wedding Photography ($800)</option>
+                <option value="wedding" data-price="2000" data-desc="Full day coverage, 150+ edited shots, hardcover premium album.">Full Wedding Photography ($2,000)</option>
+                <option value="events" data-price="600" data-desc="4-hour event coverage, digital gallery, rapid highlights delivery.">Event Photography ($600)</option>
+                <option value="fashion" data-price="700" data-desc="Studio session, creative art direction, 15 editorial retouched images.">Fashion & Model Shoots ($700)</option>
+                <option value="product" data-price="500" data-desc="Clean catalog shoots, customized set arrangements, 10 key marketing shots.">Product Commercial Shoots ($500)</option>
+                <option value="videography" data-price="1200" data-desc="4K Highlights Reel (3-5 mins), professional voice/audio sync, drone footage.">Cinematic Videography ($1,200)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Add-Ons (Optional)</label>
+              <div class="checkbox-group">
+                <label class="checkbox-container">
+                  <input type="checkbox" name="addons" value="drone" data-price="350">
+                  <span class="checkmark"></span>
+                  Aerial Drone Footage (+$350)
+                </label>
+                <label class="checkbox-container">
+                  <input type="checkbox" name="addons" value="rush" data-price="200">
+                  <span class="checkmark"></span>
+                  48-Hour Rush Delivery (+$200)
+                </label>
+                <label class="checkbox-container">
+                  <input type="checkbox" name="addons" value="album" data-price="300">
+                  <span class="checkmark"></span>
+                  Premium Hardcover Printed Album (+$300)
+                </label>
+                <label class="checkbox-container">
+                  <input type="checkbox" name="addons" value="extended" data-price="400">
+                  <span class="checkmark"></span>
+                  Extra 2 Hours Shoot Time (+$400)
+                </label>
+              </div>
+            </div>
+
+            <h3 class="form-title">Client Details</h3>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="client-name">Your Name *</label>
+                <input type="text" id="client-name" name="name" placeholder="John Doe" required>
+              </div>
+              <div class="form-group">
+                <label for="client-email">Email Address *</label>
+                <input type="email" id="client-email" name="email" placeholder="john@example.com" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="client-phone">Phone Number *</label>
+                <input type="tel" id="client-phone" name="phone" placeholder="+91 98765 43210" required>
+              </div>
+              <div class="form-group">
+                <label for="booking-date">Select Date *</label>
+                <input type="date" id="booking-date" name="date" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="booking-details">Specific Requests / Location Details</label>
+              <textarea id="booking-details" name="details" rows="3" placeholder="Tell us more about your event theme, locations, outfits, or specific shots needed."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Submit Booking Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION: Floating Glass Card -->
+  <section id="contact" class="locus-section section-padding">
+    <div class="container locus-card animate-on-scroll">
+      <div class="grid grid-2">
+        <div class="contact-details">
+          <span class="section-tag">Let's Connect</span>
+          <h2 class="section-title">Schedule a Consultation</h2>
+          <p class="about-text">Have questions about our availability or locations? Send us a direct inquiry. We respond within 24 hours.</p>
+
+          <div class="contact-info-list">
+            <div class="contact-info-item">
+              <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+              <div class="info-text">
+                <h4>Phone / WhatsApp</h4>
+                <p>+91 98765 43210</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div class="info-text">
+                <h4>Email Address</h4>
+                <p>info@advayadhyapak.com</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="info-text">
+                <h4>Studio Address</h4>
+                <p>302 Creative Chambers, Koregaon Park, Pune, Maharashtra, India</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="social-link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <form id="contact-form" class="contact-form">
+            <h3 class="form-title">Send a Message</h3>
+            
+            <div class="form-group">
+              <label for="contact-name">Full Name *</label>
+              <input type="text" id="contact-name" name="name" placeholder="Your Name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email">Email Address *</label>
+              <input type="email" id="contact-email" name="email" placeholder="yourname@domain.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" name="subject" placeholder="Pricing consultation / Editorial inquiry">
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">Your Message *</label>
+              <textarea id="contact-message" name="message" rows="5" placeholder="Details about your requirements..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container text-center">
+      <div class="footer-logo-wrapper">
+        <img src="images/logo_light.png" alt="Advay Adhyapak Photography" class="footer-logo-img logo-img-light">
+        <img src="images/logo_dark.png" alt="Advay Adhyapak Photography" class="footer-logo-img logo-img-dark">
+      </div>
+      <p class="footer-copy">&copy; 2026 Advay Adhyapak Photography. All rights reserved.</p>
+      <p class="footer-admin-link">
+        <a href="admin.html" class="admin-link-btn"><i class="fa-solid fa-lock"></i> Staff Dashboard</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Custom Fullscreen Lightbox Overlay -->
+  <div id="lightbox" class="lightbox-overlay" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close Lightbox">&times;</button>
+    <button class="lightbox-arrow arrow-left" id="lightbox-prev" aria-label="Previous Image">&#10094;</button>
+    <button class="lightbox-arrow arrow-right" id="lightbox-next" aria-label="Next Image">&#10095;</button>
+    <div class="lightbox-content-wrapper">
+      <img id="lightbox-img" src="" alt="Lightbox View">
+      <div class="lightbox-caption">
+        <h4 id="lightbox-title">Image Title</h4>
+        <p id="lightbox-desc">Image description goes here.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="js/main.js"></script>
+</body>
+</html>

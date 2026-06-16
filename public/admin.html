@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Dashboard | Advay Adhyapak Photography</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- Custom Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- 1. LOGIN SCREEN -->
+  <div id="login-screen" class="admin-login-wrapper">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-logo-container">
+          <img src="images/logo_light.png" alt="Advay Adhyapak" class="login-logo-img logo-img-light">
+          <img src="images/logo_dark.png" alt="Advay Adhyapak" class="login-logo-img logo-img-dark">
+        </div>
+        <p style="margin-top: 1rem;">Staff Portal Access</p>
+      </div>
+      
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <label for="admin-password">Enter Portal Password</label>
+          <input type="password" id="admin-password" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Authenticate</button>
+      </form>
+      <div class="login-footer">
+        <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Back to Main Site</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. DASHBOARD CONTAINER (Hidden initially) -->
+  <div id="dashboard-wrapper" class="dashboard-wrapper" style="display: none;">
+    <!-- Dashboard Header -->
+    <header class="dash-header">
+      <div class="dash-header-container">
+        <div class="dash-logo-wrapper">
+          <img src="images/logo_light.png" alt="Advay Adhyapak" class="dash-logo-img logo-img-light">
+          <img src="images/logo_dark.png" alt="Advay Adhyapak" class="dash-logo-img logo-img-dark">
+          <span class="badge">Portal</span>
+        </div>
+        <div class="dash-user">
+          <span><i class="fa-solid fa-user-tie"></i> Administrator</span>
+          <button id="logout-btn" class="logout-btn" title="Logout"><i class="fa-solid fa-right-from-bracket"></i></button>
+        </div>
+      </div>
+    </header>
+
+    <div class="dash-container">
+      
+      <!-- Metrics Panels -->
+      <section class="metrics-grid grid grid-4">
+        <div class="metric-card">
+          <div class="metric-icon bg-blue"><i class="fa-solid fa-calendar-days"></i></div>
+          <div class="metric-info">
+            <h3 id="stat-total-bookings">0</h3>
+            <p>Total Bookings</p>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon bg-yellow"><i class="fa-solid fa-clock-rotate-left"></i></div>
+          <div class="metric-info">
+            <h3 id="stat-pending-bookings">0</h3>
+            <p>Pending Review</p>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon bg-green"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="metric-info">
+            <h3 id="stat-approved-bookings">0</h3>
+            <p>Approved Shoots</p>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon bg-purple"><i class="fa-solid fa-envelope-open-text"></i></div>
+          <div class="metric-info">
+            <h3 id="stat-messages">0</h3>
+            <p>Client Inquiries</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Section Controls -->
+      <main class="dash-main-card">
+        <!-- Navigation Tabs -->
+        <div class="dash-tabs">
+          <button class="tab-btn active" data-tab="bookings-tab">
+            <i class="fa-solid fa-calendar-check"></i> Bookings Queue
+          </button>
+          <button class="tab-btn" data-tab="messages-tab">
+            <i class="fa-solid fa-envelope"></i> Inquiries Inbox
+          </button>
+        </div>
+
+        <!-- Filter / Search Controls -->
+        <div class="dash-controls">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="dash-search" placeholder="Search by name, email or phone...">
+          </div>
+          <div class="filter-select">
+            <select id="dash-status-filter">
+              <option value="all">All Statuses</option>
+              <option value="pending">Pending</option>
+              <option value="approved">Approved</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT: BOOKINGS -->
+        <div id="bookings-tab" class="tab-content active">
+          <div class="table-responsive">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>Shoot Category</th>
+                  <th>Target Date</th>
+                  <th>Status</th>
+                  <th>Details</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="bookings-table-body">
+                <!-- Injected via Javascript -->
+                <tr>
+                  <td colspan="6" class="text-center py-4 text-muted">Loading bookings queue...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT: CONTACT MESSAGES -->
+        <div id="messages-tab" class="tab-content">
+          <div class="table-responsive">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Sender Info</th>
+                  <th>Subject</th>
+                  <th>Message Body</th>
+                  <th>Submitted At</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="messages-table-body">
+                <!-- Injected via Javascript -->
+                <tr>
+                  <td colspan="5" class="text-center py-4 text-muted">Loading inquiries inbox...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/admin.js"></script>
+</body>
+</html>

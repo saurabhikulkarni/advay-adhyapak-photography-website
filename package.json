@@ -1,0 +1,22 @@
+{
+  "name": "advay-adhyapak-photography-website",
+  "version": "1.0.0",
+  "description": "Premium Full-Stack Photography Portfolio Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "photography",
+    "portfolio",
+    "express",
+    "full-stack"
+  ],
+  "author": "Antigravity",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
