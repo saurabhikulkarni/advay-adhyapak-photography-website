@@ -279,14 +279,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo-img {
-  height: 85px;
+  height: 120px;
   width: auto;
   object-fit: contain;
   transition: var(--transition-smooth);
 }
 
 .navbar-header.scrolled .logo-img {
-  height: 62px;
+  height: 85px;
 }
 
 /* Toggle Logo Visibility based on theme */
@@ -1149,7 +1149,7 @@ textarea:focus {
 }
 
 .footer-logo-img {
-  height: 75px;
+  height: 110px;
   width: auto;
 }
 
