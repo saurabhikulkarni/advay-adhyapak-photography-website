@@ -59,30 +59,33 @@
 
     /* Glass Card Container */
     .container {
-      max-width: 550px;
+      max-width: 650px;
       width: 100%;
-      padding: 3rem 2.5rem;
+      padding: 4rem 3.5rem;
       background: var(--glass-bg);
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
       border: 1px solid var(--glass-border);
-      border-radius: 20px;
+      border-radius: 24px;
       text-align: center;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
       animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transition: all 0.3s ease;
     }
 
     /* Logo Styling */
     .logo-wrapper {
-      margin-bottom: 2rem;
+      margin-bottom: 2.2rem;
       display: inline-block;
+      width: 100%;
     }
 
     .logo-img {
-      height: 130px;
+      height: 180px;
       max-width: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
+      filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.45));
+      transition: all 0.3s ease;
     }
 
     /* Header Typography */
@@ -304,15 +307,56 @@
       }
     }
 
-    @media (max-width: 480px) {
+    /* Responsive styling for Tablet / iPad (Mac OS & iOS / Android tabs) */
+    @media (max-width: 768px) {
       .container {
-        padding: 2rem 1.5rem;
-      }
-      .title {
-        font-size: 1.2rem;
+        max-width: 90%;
+        padding: 3rem 2.5rem;
       }
       .logo-img {
-        height: 95px;
+        height: 140px;
+      }
+      .title {
+        font-size: 1.35rem;
+      }
+    }
+
+    /* Responsive styling for Mobiles (iPhone / Android) */
+    @media (max-width: 480px) {
+      .container {
+        width: 95%;
+        padding: 2rem 1.25rem;
+      }
+      .logo-img {
+        height: 105px;
+      }
+      .title {
+        font-size: 1.15rem;
+        letter-spacing: 0.06em;
+        line-height: 1.3;
+      }
+      .tagline {
+        font-size: 0.65rem;
+        letter-spacing: 0.25em;
+      }
+      .description {
+        font-size: 0.8rem;
+        margin-bottom: 1.8rem;
+        line-height: 1.5;
+      }
+      .inquiry-form-container {
+        padding-top: 1.5rem;
+      }
+      .form-title {
+        font-size: 0.65rem;
+      }
+      .form-control {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.78rem;
+      }
+      .btn-submit {
+        padding: 0.8rem 1.25rem;
+        font-size: 0.7rem;
       }
     }
   </style>
