@@ -115,6 +115,79 @@
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
       animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden; /* For glass sweep */
+    }
+
+    /* Glass Card Shimmer Sweep */
+    .container::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 30%;
+      height: 200%;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: rotate(30deg);
+      animation: card-shimmer 8s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes card-shimmer {
+      0% { left: -60%; }
+      30% { left: 140%; }
+      100% { left: 140%; }
+    }
+
+    /* Pulsing Status Indicator */
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 0.45rem 1.1rem;
+      border-radius: 50px;
+      margin: 0.5rem auto 1.5rem;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+      animation: pulse-dot 1.8s infinite;
+    }
+
+    .status-text {
+      font-family: 'Syncopate', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+    }
+
+    @keyframes pulse-dot {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(212, 175, 55, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+      }
     }
 
     /* Logo Styling */
@@ -152,6 +225,19 @@
       margin-bottom: 1.2rem;
       text-transform: uppercase;
       color: var(--text-primary);
+      background: linear-gradient(to right, #ffffff 20%, #d4af37 40%, #ffffff 60%, #ffffff 80%);
+      background-size: 200% auto;
+      background-clip: text;
+      text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: text-shimmer 6s linear infinite;
+    }
+
+    @keyframes text-shimmer {
+      to {
+        background-position: 200% center;
+      }
     }
 
     .description {
@@ -428,6 +514,13 @@
     </a>
 
     <div class="tagline">Fine-Art Photography</div>
+    
+    <!-- Pulsing Status Indicator -->
+    <div class="status-indicator">
+      <span class="status-dot"></span>
+      <span class="status-text">Official Launch Curations In Progress</span>
+    </div>
+    
     <h1 class="title">Crafting Stories.<br>Launching Soon.</h1>
     <p class="description">
       We are curating a premium visual experience showcasing our portfolio of fine-art weddings, pre-weddings, editorial portraits, brand product shoots and events.
