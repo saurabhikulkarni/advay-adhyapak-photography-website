@@ -459,18 +459,39 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 800px;
 }
 
-.hero-title-large {
-  font-size: 2.25rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
+.hero-logo-recreation {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.5rem auto 2.5rem;
+  max-width: 95vw;
 }
 
-@media (min-width: 768px) {
-  .hero-title-large {
-    font-size: 3.75rem;
-  }
+.hero-title-large {
+  font-size: clamp(1.4rem, 4.8vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.hero-logo-line {
+  height: 1px;
+  width: 100%;
+  background-color: var(--text-primary);
+  opacity: 0.65;
+  margin: 0.6rem 0;
+  transition: background-color 0.8s ease;
+}
+
+.hero-logo-subtext {
+  font-family: var(--font-serif);
+  font-size: clamp(0.65rem, 1.8vw, 1.05rem);
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-right: -0.42em;
 }
 
 .hero-subtitle-clean {
