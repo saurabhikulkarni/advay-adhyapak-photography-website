@@ -43,18 +43,62 @@
       padding: 2rem 1rem;
     }
 
-    /* Fixed Fullscreen Background Image with Dark Overlay */
-    .bg-overlay {
+    /* --- Fixed Fullscreen Background Slideshow --- */
+    .bg-slideshow-container {
       position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -2;
+      overflow: hidden;
+    }
+
+    .bg-slide {
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.65) 50%, rgba(10, 10, 10, 0.95) 100%), url('images/bg1.png');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
-      z-index: -1;
+      opacity: 0;
+      transition: opacity 1.8s ease-in-out;
+      transform: scale(1.02);
+    }
+
+    .bg-slide.active {
+      opacity: 1;
+      transform: scale(1.0);
+      transition: opacity 1.8s ease-in-out, transform 8s ease-out;
+    }
+
+    .bg-slideshow-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.75) 50%, rgba(10, 10, 10, 0.95) 100%);
+    }
+
+    /* Dropdown Styling */
+    select.form-control {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2724%27%20height%3D%2724%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27%23ffffff%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpolyline%20points%3D%276%209%2012%2015%2018%209%27%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1em;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+
+    select.form-control option {
+      background: #121212;
+      color: var(--text-primary);
     }
 
     /* Glass Card Container */
@@ -363,8 +407,14 @@
 </head>
 <body>
 
-  <!-- Fullscreen Fixed Background Overlay -->
-  <div class="bg-overlay"></div>
+  <!-- Fixed Fullscreen Background Slideshow (Locus Aesthetic) -->
+  <div class="bg-slideshow-container">
+    <div class="bg-slide active" style="background-image: url('images/bg1.png');"></div>
+    <div class="bg-slide" style="background-image: url('images/bg2.png');"></div>
+    <div class="bg-slide" style="background-image: url('images/bg3.png');"></div>
+    <div class="bg-slide" style="background-image: url('images/bg4.png');"></div>
+    <div class="bg-slideshow-overlay"></div>
+  </div>
 
   <!-- Toast Notification Container -->
   <div id="toast-container"></div>
@@ -393,13 +443,34 @@
         </div>
 
         <div class="form-group">
+          <label for="phone">Your Mobile Number *</label>
+          <input type="tel" id="phone" name="phone" class="form-control" placeholder="+91 XXXXX XXXXX" required>
+        </div>
+
+        <div class="form-group">
           <label for="email">Email Address *</label>
           <input type="email" id="email" name="email" class="form-control" placeholder="jane@domain.com" required>
         </div>
 
         <div class="form-group">
+          <label for="category">Inquiry For *</label>
+          <select id="category" name="category" class="form-control select-control" required>
+            <option value="" disabled selected>Select an option...</option>
+            <option value="Fine-Art Wedding & Pre-Wedding Shoot">Fine-Art Wedding & Pre-Wedding Shoot</option>
+            <option value="Commercial & Brand Campaign Shoot">Commercial & Brand Campaign Shoot</option>
+            <option value="Premium Product & Still Life Shoot">Premium Product & Still Life Shoot</option>
+            <option value="Editorial Fashion & Model Photoshoot">Editorial Fashion & Model Photoshoot</option>
+            <option value="Architectural, Interior & Villa Shoot">Architectural, Interior & Villa Shoot (Real Estate)</option>
+            <option value="Corporate & Social Event Coverage">Corporate & Social Event Coverage</option>
+            <option value="Personal Portrait Session">Personal Fine-Art Portrait Session</option>
+            <option value="Cinematography & Video Production">Cinematography & Video Production</option>
+            <option value="Other / Custom Inquiry">Other / Custom Inquiry</option>
+          </select>
+        </div>
+
+        <div class="form-group">
           <label for="message">Requirements / Message *</label>
-          <textarea id="message" name="message" class="form-control" rows="4" placeholder="Tell us about your event date, type, and location details..." required></textarea>
+          <textarea id="message" name="message" class="form-control" rows="4" placeholder="Tell us about your event date, location details, Villa name or specific preferences..." required></textarea>
         </div>
 
         <button type="submit" id="submit-btn" class="btn-submit">Submit Inquiry</button>
@@ -416,8 +487,23 @@
 
   </main>
 
-  <!-- Form Submission JavaScript -->
+  <!-- Background Slideshow and Form Submission JavaScript -->
   <script>
+    // --- Background Slideshow Cycler (Locus Aesthetic) ---
+    const bgSlides = document.querySelectorAll('.bg-slide');
+    let currentBgSlide = 0;
+    
+    function nextBgSlide() {
+      bgSlides[currentBgSlide].classList.remove('active');
+      currentBgSlide = (currentBgSlide + 1) % bgSlides.length;
+      bgSlides[currentBgSlide].classList.add('active');
+    }
+
+    if (bgSlides.length > 0) {
+      setInterval(nextBgSlide, 6500);
+    }
+
+    // --- Form Submission Handler ---
     const form = document.getElementById('coming-soon-form');
     const submitBtn = document.getElementById('submit-btn');
     const toastContainer = document.getElementById('toast-container');
@@ -435,23 +521,33 @@
       setTimeout(() => {
         toast.style.animation = 'slideOut 0.3s ease forwards';
         setTimeout(() => toast.remove(), 300);
-      }, 4000);
+      }, 4500);
     }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const category = document.getElementById('category').value;
+      const message = document.getElementById('message').value.trim();
+
       submitBtn.disabled = true;
       const originalText = submitBtn.textContent;
       submitBtn.textContent = 'Sending...';
 
       const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value,
-        subject: 'Coming Soon Inquiry'
+        name,
+        phone,
+        email,
+        category,
+        message,
+        subject: `New Inquiry: ${category}`
       };
 
       try {
+        // 1. Submit to local Express backend (logs it & triggers background SMTP email)
         const response = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -461,7 +557,23 @@
         const data = await response.json();
         
         if (response.ok && data.success) {
-          showToast('Thank you for reaching out! We have received your inquiry.', 'success');
+          showToast('Inquiry recorded! Redirecting to WhatsApp...', 'success');
+          
+          // 2. Open WhatsApp Business click-to-chat in a new window/tab
+          const waNumber = "917588109200";
+          const waMessage = `Hello Advay, I would like to inquire about your photography services:
+
+*Name:* ${name}
+*Phone:* ${phone}
+*Email:* ${email}
+*Service Type:* ${category}
+*Details/Requirements:* ${message}`;
+
+          const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
+          
+          // Open WhatsApp link in new tab
+          window.open(waUrl, '_blank');
+          
           form.reset();
         } else {
           showToast(data.message || 'Something went wrong. Please try again.', 'error');
