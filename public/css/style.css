@@ -475,15 +475,6 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
 
-.hero-logo-line {
-  height: 1px;
-  width: 100%;
-  background-color: var(--text-primary);
-  opacity: 0.65;
-  margin: 0.6rem 0;
-  transition: background-color 0.8s ease;
-}
-
 .hero-logo-subtext {
   font-family: var(--font-serif);
   font-size: clamp(0.65rem, 1.8vw, 1.05rem);
