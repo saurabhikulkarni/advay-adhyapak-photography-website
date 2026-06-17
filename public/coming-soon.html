@@ -285,6 +285,83 @@
       text-align: left;
     }
 
+    /* Facebook Dropdown Menu Styling */
+    .facebook-wrapper {
+      position: relative;
+    }
+
+    .facebook-menu {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: rgba(15, 15, 15, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 0.6rem;
+      width: 220px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65);
+      z-index: 150;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+      pointer-events: none;
+    }
+
+    .facebook-menu::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .facebook-wrapper.open .facebook-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+
+    .facebook-menu-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0.8rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .facebook-menu-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--accent);
+    }
+
+    .facebook-menu-item i {
+      font-size: 0.95rem;
+      color: var(--accent);
+    }
+
+    .facebook-menu-title {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      padding: 0.3rem 0.8rem 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      margin-bottom: 0.4rem;
+      text-align: left;
+    }
+
     /* Glass Card Container */
     .container {
       max-width: 650px;
@@ -849,7 +926,28 @@
           </a>
         </div>
       </div>
-      <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <div class="social-icon-wrapper facebook-wrapper">
+        <button type="button" class="social-icon" id="facebook-trigger" aria-label="Facebook Links" aria-expanded="false">
+          <i class="fa-brands fa-facebook-f"></i>
+        </button>
+        <div class="facebook-menu" id="facebook-menu">
+          <div class="facebook-menu-title">Facebook Portfolios</div>
+          <a href="https://www.facebook.com/share/1TQXFo6tut/?mibextid=wwXIfr" target="_blank" rel="noopener" class="facebook-menu-item">
+            <i class="fa-brands fa-facebook-f"></i>
+            <div>
+              <div style="color: #ffffff; font-weight: 600;">Weddings Page</div>
+              <div style="font-size: 0.65rem; color: #a0a0a0;">Wedding Stories by Advay</div>
+            </div>
+          </a>
+          <a href="https://www.facebook.com/share/1FeEvsDyQe/?mibextid=wwXIfr" target="_blank" rel="noopener" class="facebook-menu-item">
+            <i class="fa-brands fa-facebook-f"></i>
+            <div>
+              <div style="color: #ffffff; font-weight: 600;">Fashion & Editorial</div>
+              <div style="font-size: 0.65rem; color: #a0a0a0;">Advay Adhyapak Photography</div>
+            </div>
+          </a>
+        </div>
+      </div>
       <a href="https://youtube.com" target="_blank" rel="noopener" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
       <a href="https://pinterest.com" target="_blank" rel="noopener" class="social-icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
     </div>
@@ -1060,6 +1158,49 @@
           instaWrapper.classList.remove('open');
           instaTrigger.setAttribute('aria-expanded', 'false');
         }
+      });
+    }
+
+    // --- Facebook Dropdown Handler ---
+    const fbTrigger = document.getElementById('facebook-trigger');
+    const fbWrapper = document.querySelector('.facebook-wrapper');
+
+    if (fbTrigger && fbWrapper) {
+      fbTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        // Close other dropdowns if open
+        if (instaWrapper) {
+          instaWrapper.classList.remove('open');
+          instaTrigger.setAttribute('aria-expanded', 'false');
+        }
+        
+        const isOpen = fbWrapper.classList.toggle('open');
+        fbTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Close if clicked outside
+      document.addEventListener('click', (e) => {
+        if (!fbWrapper.contains(e.target)) {
+          fbWrapper.classList.remove('open');
+          fbTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          fbWrapper.classList.remove('open');
+          fbTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // --- Link Instagram trigger to close Facebook dropdown ---
+    if (instaTrigger && instaWrapper && fbWrapper && fbTrigger) {
+      instaTrigger.addEventListener('click', (e) => {
+        fbWrapper.classList.remove('open');
+        fbTrigger.setAttribute('aria-expanded', 'false');
       });
     }
   </script>
