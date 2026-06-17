@@ -83,26 +83,122 @@
       background: linear-gradient(135deg, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.75) 50%, rgba(10, 10, 10, 0.95) 100%);
     }
 
-    /* Dropdown Styling */
-    select.form-control {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2724%27%20height%3D%2724%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27%23ffffff%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpolyline%20points%3D%276%209%2012%2015%2018%209%27%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E");
-      background-repeat: no-repeat;
-      background-position: right 1rem center;
-      background-size: 1em;
-      padding-right: 2.5rem;
-      cursor: pointer;
-      text-align: left;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      max-width: 100%;
+    /* Custom Select Dropdown Styling */
+    .custom-select-wrapper {
+      position: relative;
+      width: 100%;
     }
 
-    select.form-control option {
-      background: #121212;
+    /* Hide native select visually but keep it accessible for form validation/submit */
+    .custom-select-wrapper select {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .custom-select-trigger {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
       color: var(--text-primary);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .custom-select-trigger:focus,
+    .custom-select-wrapper.open .custom-select-trigger {
+      outline: none;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+    }
+
+    .custom-select-trigger::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid #ffffff;
+      transition: transform 0.3s ease;
+      margin-left: 1rem;
+    }
+
+    .custom-select-wrapper.open .custom-select-trigger::after {
+      transform: rotate(180deg);
+    }
+
+    .custom-options {
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 0;
+      right: 0;
+      background: rgba(18, 18, 18, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65);
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+      max-height: 240px;
+      overflow-y: auto;
+      padding: 0.35rem;
+    }
+
+    .custom-select-wrapper.open .custom-options {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .custom-option {
+      padding: 0.65rem 1rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .custom-option:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-primary);
+    }
+
+    .custom-option.selected {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Scrollbar style for custom options */
+    .custom-options::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-options::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .custom-options::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+    }
+    .custom-options::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.3);
     }
 
     /* Glass Card Container */
@@ -415,7 +511,7 @@
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: none;
       }
     }
 
@@ -497,6 +593,14 @@
         padding: 0.7rem 0.9rem;
         font-size: 0.78rem;
       }
+      .custom-select-trigger {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.78rem;
+      }
+      .custom-option {
+        padding: 0.6rem 0.9rem;
+        font-size: 0.78rem;
+      }
       .btn-submit {
         padding: 0.8rem 1.25rem;
         font-size: 0.7rem;
@@ -560,18 +664,20 @@
 
         <div class="form-group">
           <label for="category">Inquiry For *</label>
-          <select id="category" name="category" class="form-control select-control" required>
-            <option value="" disabled selected>Select an option...</option>
-            <option value="Wedding & Pre-Wedding">Wedding & Pre-Wedding</option>
-            <option value="Brand & Commercial Campaign">Brand & Commercial Campaign</option>
-            <option value="Product & Still Life">Product & Still Life</option>
-            <option value="Fashion & Model Photoshoot">Fashion & Model Photoshoot</option>
-            <option value="Villa & Real Estate Shoot">Villa & Real Estate Shoot</option>
-            <option value="Corporate & Social Events">Corporate & Social Events</option>
-            <option value="Fine-Art Portrait Session">Fine-Art Portrait Session</option>
-            <option value="Video & Cinematography">Video & Cinematography</option>
-            <option value="Other / Custom Inquiry">Other / Custom Inquiry</option>
-          </select>
+          <div class="custom-select-wrapper">
+            <select id="category" name="category" class="form-control select-control" required>
+              <option value="" disabled selected>Select an option...</option>
+              <option value="Wedding & Pre-Wedding">Wedding & Pre-Wedding</option>
+              <option value="Brand & Commercial Campaign">Brand & Commercial Campaign</option>
+              <option value="Product & Still Life">Product & Still Life</option>
+              <option value="Fashion & Model Photoshoot">Fashion & Model Photoshoot</option>
+              <option value="Villa & Real Estate Shoot">Villa & Real Estate Shoot</option>
+              <option value="Corporate & Social Events">Corporate & Social Events</option>
+              <option value="Fine-Art Portrait Session">Fine-Art Portrait Session</option>
+              <option value="Video & Cinematography">Video & Cinematography</option>
+              <option value="Other / Custom Inquiry">Other / Custom Inquiry</option>
+            </select>
+          </div>
         </div>
 
         <div class="form-group">
@@ -691,6 +797,86 @@
         submitBtn.textContent = originalText;
       }
     });
+
+    // --- Custom Select Dropdown Implementation ---
+    const customSelectWrapper = document.querySelector('.custom-select-wrapper');
+    const nativeSelect = document.getElementById('category');
+    
+    if (customSelectWrapper && nativeSelect) {
+      // 1. Create trigger element
+      const trigger = document.createElement('div');
+      trigger.className = 'custom-select-trigger';
+      trigger.setAttribute('tabindex', '0'); // Make focusable
+      trigger.textContent = nativeSelect.options[nativeSelect.selectedIndex]?.textContent || 'Select an option...';
+      customSelectWrapper.appendChild(trigger);
+      
+      // 2. Create options container
+      const optionsContainer = document.createElement('div');
+      optionsContainer.className = 'custom-options';
+      customSelectWrapper.appendChild(optionsContainer);
+      
+      // 3. Populate custom options from native select
+      Array.from(nativeSelect.options).forEach((option, index) => {
+        if (option.value === "") return; // Skip placeholder
+        
+        const customOption = document.createElement('div');
+        customOption.className = 'custom-option';
+        customOption.textContent = option.textContent;
+        customOption.dataset.value = option.value;
+        customOption.dataset.index = index;
+        
+        if (option.selected) {
+          customOption.classList.add('selected');
+        }
+        
+        customOption.addEventListener('click', () => {
+          // Unselect previous
+          const selected = optionsContainer.querySelector('.custom-option.selected');
+          if (selected) selected.classList.remove('selected');
+          
+          // Select current
+          customOption.classList.add('selected');
+          trigger.textContent = option.textContent;
+          nativeSelect.selectedIndex = index;
+          
+          // Trigger change event on native select
+          nativeSelect.dispatchEvent(new Event('change'));
+          
+          // Close dropdown
+          customSelectWrapper.classList.remove('open');
+        });
+        
+        optionsContainer.appendChild(customOption);
+      });
+      
+      // Toggle dropdown open/close
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        customSelectWrapper.classList.toggle('open');
+      });
+      
+      // Close dropdown if clicked outside
+      document.addEventListener('click', (e) => {
+        if (!customSelectWrapper.contains(e.target)) {
+          customSelectWrapper.classList.remove('open');
+        }
+      });
+      
+      // Close dropdown if pressing Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          customSelectWrapper.classList.remove('open');
+        }
+      });
+      
+      // Enable keyboard navigation for trigger
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          customSelectWrapper.classList.toggle('open');
+        }
+      });
+    }
   </script>
 </body>
 </html>
