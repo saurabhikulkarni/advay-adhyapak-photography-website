@@ -201,6 +201,90 @@
       background: rgba(255, 255, 255, 0.3);
     }
 
+    /* Instagram Dropdown Menu Styling */
+    .instagram-wrapper {
+      position: relative;
+    }
+
+    button.social-icon {
+      outline: none;
+      cursor: pointer;
+      font-family: inherit;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .instagram-menu {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: rgba(15, 15, 15, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 0.6rem;
+      width: 220px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65);
+      z-index: 150;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+      pointer-events: none;
+    }
+
+    .instagram-menu::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .instagram-wrapper.open .instagram-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+
+    .instagram-menu-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0.8rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .instagram-menu-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--accent);
+    }
+
+    .instagram-menu-item i {
+      font-size: 0.95rem;
+      color: var(--accent);
+    }
+
+    .instagram-menu-title {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      padding: 0.3rem 0.8rem 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      margin-bottom: 0.4rem;
+      text-align: left;
+    }
+
     /* Glass Card Container */
     .container {
       max-width: 650px;
@@ -743,7 +827,28 @@
 
     <!-- Social Links -->
     <div class="socials">
-      <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <div class="social-icon-wrapper instagram-wrapper">
+        <button type="button" class="social-icon" id="instagram-trigger" aria-label="Instagram Links" aria-expanded="false">
+          <i class="fa-brands fa-instagram"></i>
+        </button>
+        <div class="instagram-menu" id="instagram-menu">
+          <div class="instagram-menu-title">Instagram Portfolios</div>
+          <a href="https://instagram.com/advay_weddings" target="_blank" rel="noopener" class="instagram-menu-item">
+            <i class="fa-brands fa-instagram"></i>
+            <div>
+              <div style="color: #ffffff; font-weight: 600;">Weddings Portfolio</div>
+              <div style="font-size: 0.65rem; color: #a0a0a0;">@advay_weddings</div>
+            </div>
+          </a>
+          <a href="https://instagram.com/advay_fashion" target="_blank" rel="noopener" class="instagram-menu-item">
+            <i class="fa-brands fa-instagram"></i>
+            <div>
+              <div style="color: #ffffff; font-weight: 600;">Fashion & Editorial</div>
+              <div style="font-size: 0.65rem; color: #a0a0a0;">@advay_fashion</div>
+            </div>
+          </a>
+        </div>
+      </div>
       <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
       <a href="https://youtube.com" target="_blank" rel="noopener" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
       <a href="https://pinterest.com" target="_blank" rel="noopener" class="social-icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
@@ -926,6 +1031,34 @@
         if (e.key === ' ' || e.key === 'Enter') {
           e.preventDefault();
           customSelectWrapper.classList.toggle('open');
+        }
+      });
+    }
+
+    // --- Instagram Dropdown Handler ---
+    const instaTrigger = document.getElementById('instagram-trigger');
+    const instaWrapper = document.querySelector('.instagram-wrapper');
+
+    if (instaTrigger && instaWrapper) {
+      instaTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = instaWrapper.classList.toggle('open');
+        instaTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Close if clicked outside
+      document.addEventListener('click', (e) => {
+        if (!instaWrapper.contains(e.target)) {
+          instaWrapper.classList.remove('open');
+          instaTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          instaWrapper.classList.remove('open');
+          instaTrigger.setAttribute('aria-expanded', 'false');
         }
       });
     }
