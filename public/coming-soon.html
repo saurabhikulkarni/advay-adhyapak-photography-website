@@ -216,8 +216,8 @@
     .instagram-menu {
       position: absolute;
       bottom: calc(100% + 12px);
-      left: 50%;
-      transform: translateX(-50%) translateY(10px);
+      left: -20px; /* Shifted to prevent left edge overflow */
+      transform: translateY(10px);
       background: rgba(15, 15, 15, 0.98);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 12px;
@@ -235,7 +235,7 @@
       content: '';
       position: absolute;
       top: 100%;
-      left: 50%;
+      left: 37.5px; /* Aligned with the Instagram icon center */
       transform: translateX(-50%);
       border-left: 6px solid transparent;
       border-right: 6px solid transparent;
@@ -245,7 +245,7 @@
     .instagram-wrapper.open .instagram-menu {
       opacity: 1;
       visibility: visible;
-      transform: translateX(-50%) translateY(0);
+      transform: translateY(0);
       pointer-events: auto;
     }
 
@@ -293,8 +293,8 @@
     .facebook-menu {
       position: absolute;
       bottom: calc(100% + 12px);
-      left: 50%;
-      transform: translateX(-50%) translateY(10px);
+      left: -70px; /* Shifted to prevent left edge overflow */
+      transform: translateY(10px);
       background: rgba(15, 15, 15, 0.98);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 12px;
@@ -312,7 +312,7 @@
       content: '';
       position: absolute;
       top: 100%;
-      left: 50%;
+      left: 87.5px; /* Aligned with the Facebook icon center */
       transform: translateX(-50%);
       border-left: 6px solid transparent;
       border-right: 6px solid transparent;
@@ -322,7 +322,7 @@
     .facebook-wrapper.open .facebook-menu {
       opacity: 1;
       visibility: visible;
-      transform: translateX(-50%) translateY(0);
+      transform: translateY(0);
       pointer-events: auto;
     }
 
